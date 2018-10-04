@@ -528,7 +528,7 @@ void checkBalance(cv::Mat cutblack) {
 	
 	int countk = 0;
 	
-	int read = -1;
+	int read = -1, Preread = -1, Postread = -1;
 	
 	int size = cutblack.rows*cutblack.cols;
 	
@@ -536,13 +536,14 @@ void checkBalance(cv::Mat cutblack) {
 	
 	int* savej = new int[size];
 	
-	for (int j = 0; j < cutblack.rows; j++) {
+	for (int j = 1; j < cutblack.rows-1; j++) {
 	
-		for (int i = 0; i < cutblack.cols; i++) {
+		for (int i = 1; i < cutblack.cols-1; i++) {
 		
 			read = cutblack.at<uchar>(j, i);
-			
-			if (read == 0) {
+			Preread = cutblack.at<uchar>(j, i-1);
+			Postread = cutblack.at<uchar>(j, i+1);
+			if ((read == 0 && Preread !=0) ||(read == 0 && Postread != 0)) {
 			
 				savej[countk] = j;
 				
