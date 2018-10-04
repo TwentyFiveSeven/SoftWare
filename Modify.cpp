@@ -18,7 +18,7 @@ using namespace std;
 
 
 
-cv::Mat masking(cv::Mat, float, float);//return masking image
+cv::Mat masking(cv::Mat);//return masking image
 
 void fill(cv::Mat);
 
@@ -45,9 +45,9 @@ int main(int argc, char* argv[]) {
 
 
 
-	cv::Mat black = masking(image, 0.3, 1.3);//흑백 이미지
+	cv::Mat black = masking(image);//흑백 이미지
 
-	cv::Mat rough = masking(image, 0.2, 1.5);
+	cv::Mat rough = masking(image);
 
 
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
 
 
 
-cv::Mat masking(cv::Mat image, float low, float high) {
+cv::Mat masking(cv::Mat image) {
 	cv::Mat black;
 	
 	cv::Mat gray_image;
